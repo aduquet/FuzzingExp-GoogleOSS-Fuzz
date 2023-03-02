@@ -1,6 +1,7 @@
 import sys
-import atheris
 import zlib
+
+import atheris
 
 # @atheris.instrument_func
 # def TestOneInput(data): 
@@ -54,21 +55,18 @@ def calc(a,b):
 	
 
 def TestOneInput(data): 
-  fdp = atheris.FuzzedDataProvider(data)
-  a = fdp.ConsumeInt(2)
-
-  fdp_b = atheris.FuzzedDataProvider(data)
-  b = fdp_b.ConsumeInt(2)
-
-  print(a)
-  print('====')
-  print(b)
-
-  try:
-  	calc(a,b)
-
-  except zlib.error:
-  	pass
+	fdp = atheris.FuzzedDataProvider(data)
+	a = fdp.ConsumeInt(2)
+	fdp_b = atheris.FuzzedDataProvider(data)
+	b = fdp_b.ConsumeInt(3)
+	print('a: ', a)
+	print('b: ', b)
+	print('====')
+	try:
+		print(calc(a,b))
+	
+	except zlib.error:
+  		pass
 
 
 		# # if len(data) != 8:
